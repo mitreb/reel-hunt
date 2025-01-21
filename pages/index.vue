@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1>Home</h1>
+    <p class="text-h4 mt-16 mb-6">Feature Today</p>
   </v-container>
 </template>
 
