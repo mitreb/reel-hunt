@@ -26,4 +26,7 @@ export default defineNuxtConfig({
       },
     },
   },
+  runtimeConfig: {
+    tmdbApiKey: process.env.NUXT_TMDB_API_KEY,
+  },
 });
