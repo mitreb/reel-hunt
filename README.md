@@ -30,7 +30,7 @@ npm install
 cp .env.example .env
 ```
 
-Add your TMDB API key to `.env`:
+Add your TMDB API key to `.env` ([Get your API key here](https://developer.themoviedb.org/docs/getting-started)):
 
 ```
 NUXT_TMDB_API_KEY=your_tmdb_api_key
