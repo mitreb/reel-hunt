@@ -1,13 +1,19 @@
 <template>
   <v-app id="inspire">
-    <v-app-bar extended>
-      <v-icon>mdi-home</v-icon>
+    <v-app-bar height="56" color="blue-grey-darken-4" class="px-4" flat>
+      <v-icon size="36">mdi-movie-roll</v-icon>
 
-      <v-app-bar-title>Application</v-app-bar-title>
+      <v-app-bar-title class="text-h4">Reel Hunt</v-app-bar-title>
 
       <v-spacer></v-spacer>
 
-      <v-input></v-input>
+      <v-text-field
+        variant="outlined"
+        density="compact"
+        hide-details
+        append-inner-icon="mdi-magnify"
+        placeholder="Search"
+      ></v-text-field>
     </v-app-bar>
 
     <v-main>
