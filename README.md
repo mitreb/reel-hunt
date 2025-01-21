@@ -1,75 +1,50 @@
-# Nuxt Minimal Starter
+# 🎬 🎯 Reel Hunt (In Progress)
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Modern movie search app built with Nuxt 3 and TMDB API.
+
+## Features
+
+- 🎥 Browse popular movies
+- 🔍 Search by title
+- 📱 Responsive design
+
+## Tech Stack
+
+- **Frontend:** Nuxt 3, Vue 3, TypeScript
+- **UI:** Vuetify 3
+- **API:** TMDB REST API
+- **State:** Vue Composition API
+- **Styling:** Material Design
 
 ## Setup
 
-Make sure to install dependencies:
+1. Install dependencies:
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+2. Configure environment:
 
 ```bash
-# npm
+cp .env.example .env
+```
+
+Add your TMDB API key to `.env`:
+
+```
+NUXT_TMDB_API_KEY=your_tmdb_api_key
+```
+
+3. Development:
+
+```bash
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
-
-Build the application for production:
+4. Production:
 
 ```bash
-# npm
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+npm run start
 ```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
