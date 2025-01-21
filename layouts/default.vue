@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-app-bar height="56" color="blue-grey-darken-4" class="px-4" flat>
+    <v-app-bar height="56" class="px-4" flat>
       <v-icon size="36">mdi-movie-roll</v-icon>
 
       <v-app-bar-title class="text-h4">Reel Hunt</v-app-bar-title>
