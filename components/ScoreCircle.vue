@@ -1,25 +1,25 @@
 <template>
   <div class="circle">
     <v-progress-circular
-      :model-value="voteAverageToPercentage(score)"
+      :model-value="scorePercentage"
       color="blue"
       size="44"
       width="5"
     >
       <p class="text-black font-weight-bold">
-        {{ formatVoteAverage(score) }}
+        {{ formattedScore }}
       </p>
     </v-progress-circular>
   </div>
 </template>
 
 <script setup lang="ts">
-import { voteAverageToPercentage, formatVoteAverage } from '@/utils';
+const props = defineProps<{
+  score: number;
+}>();
 
-defineProps({
-  score: {
-    type: Number,
-    required: true,
-  },
-});
+const { score } = toRefs(props);
+
+const scorePercentage = computed(() => Math.round(score.value * 10));
+const formattedScore = computed(() => score.value.toFixed(1));
 </script>
