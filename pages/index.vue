@@ -21,18 +21,7 @@
               aspect-ratio="2/3"
               cover
             ></v-img>
-            <div class="circle">
-              <v-progress-circular
-                :model-value="voteAverageToPercentage(movie.vote_average)"
-                color="blue"
-                size="44"
-                width="5"
-              >
-                <p class="text-black font-weight-bold">
-                  {{ formatVoteAverage(movie.vote_average) }}
-                </p>
-              </v-progress-circular>
-            </div>
+            <ScoreCircle :movie="movie" />
           </div>
           <v-card-text class="px-0">
             <h3>{{ movie.title }}</h3>
@@ -47,11 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  formatDateToMonthYear,
-  voteAverageToPercentage,
-  formatVoteAverage,
-} from '@/utils';
+import { formatDateToMonthYear } from '@/utils';
 const { movies, isLoading, fetchMovies } = useMovies();
 const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
 
