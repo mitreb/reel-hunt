@@ -21,7 +21,7 @@
               aspect-ratio="2/3"
               cover
             ></v-img>
-            <ScoreCircle :movie="movie" />
+            <ScoreCircle :score="movie.vote_average" />
           </div>
           <v-card-text class="px-0">
             <h3>{{ movie.title }}</h3>
