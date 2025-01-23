@@ -9,11 +9,14 @@
         <v-spacer></v-spacer>
 
         <v-text-field
+          v-model="search"
           variant="outlined"
           density="compact"
           hide-details
           append-inner-icon="mdi-magnify"
           placeholder="Search"
+          @click:append-inner="searchMovies"
+          @keyup.enter="searchMovies"
         ></v-text-field>
       </v-container>
     </v-app-bar>
@@ -25,4 +28,13 @@
   </v-app>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const search = ref('');
+const moviesStore = useMoviesStore();
+
+function searchMovies() {
+  if (search.value) {
+    moviesStore.searchMovies(search.value);
+  }
+}
+</script>
