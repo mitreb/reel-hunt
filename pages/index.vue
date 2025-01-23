@@ -18,22 +18,29 @@
 
     <v-pagination
       v-if="showPagination"
-      v-model="moviesStore.page"
+      :model-value="currentPage"
       :length="totalPages"
       class="my-4"
-      @update:modelValue="moviesStore.searchMovies"
+      @update:model-value="handlePageChange"
     ></v-pagination>
   </v-container>
 </template>
 
 <script setup lang="ts">
+const route = useRoute();
+const router = useRouter();
 const moviesStore = useMoviesStore();
-const { movies, tmdbResponse } = storeToRefs(moviesStore);
+const { movies, tmdbResponse, currentPage } = storeToRefs(moviesStore);
 
-const totalPages = computed(() => tmdbResponse.value?.total_pages);
-const showPagination = computed(() => totalPages.value && totalPages.value > 1);
+const totalPages = computed(() => tmdbResponse.value?.total_pages || 0);
+const showPagination = computed(() => totalPages.value > 1);
+
+async function handlePageChange(page: number) {
+  await router.push({ query: { ...route.query, page } });
+  moviesStore.searchMovies();
+}
 
 onMounted(() => {
-  moviesStore.fetchMovies();
+  moviesStore.searchMovies();
 });
 </script>
