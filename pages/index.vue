@@ -15,12 +15,23 @@
         <HomeMovieCard :movie="movie" />
       </v-col>
     </v-row>
+
+    <v-pagination
+      v-if="showPagination"
+      v-model="moviesStore.page"
+      :length="totalPages"
+      class="my-4"
+      @update:modelValue="moviesStore.searchMovies"
+    ></v-pagination>
   </v-container>
 </template>
 
 <script setup lang="ts">
 const moviesStore = useMoviesStore();
-const { movies } = storeToRefs(moviesStore);
+const { movies, tmdbResponse } = storeToRefs(moviesStore);
+
+const totalPages = computed(() => tmdbResponse.value?.total_pages);
+const showPagination = computed(() => totalPages.value && totalPages.value > 1);
 
 onMounted(() => {
   moviesStore.fetchMovies();
