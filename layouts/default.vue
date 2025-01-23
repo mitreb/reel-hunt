@@ -9,7 +9,7 @@
         <v-spacer></v-spacer>
 
         <v-text-field
-          v-model="search"
+          v-model="moviesStore.term"
           variant="outlined"
           density="compact"
           hide-details
@@ -29,12 +29,9 @@
 </template>
 
 <script setup lang="ts">
-const search = ref('');
 const moviesStore = useMoviesStore();
 
 function searchMovies() {
-  if (search.value) {
-    moviesStore.searchMovies(search.value);
-  }
+  moviesStore.searchMovies();
 }
 </script>
