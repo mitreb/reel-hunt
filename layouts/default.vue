@@ -9,14 +9,14 @@
         <v-spacer></v-spacer>
 
         <v-text-field
-          v-model="moviesStore.term"
+          :model-value="searchTerm"
           variant="outlined"
           density="compact"
           hide-details
           append-inner-icon="mdi-magnify"
           placeholder="Search"
-          @click:append-inner="searchMovies"
-          @keyup.enter="searchMovies"
+          @update:model-value="handleSearchInput"
+          @click:append-inner="moviesStore.searchMovies"
         ></v-text-field>
       </v-container>
     </v-app-bar>
@@ -29,9 +29,12 @@
 </template>
 
 <script setup lang="ts">
+const route = useRoute();
+const router = useRouter();
 const moviesStore = useMoviesStore();
+const { searchTerm } = storeToRefs(moviesStore);
 
-function searchMovies() {
-  moviesStore.searchMovies();
+function handleSearchInput(term: string) {
+  router.push({ query: { ...route.query, q: term || undefined } });
 }
 </script>
