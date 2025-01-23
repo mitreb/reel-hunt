@@ -2,8 +2,10 @@ import { defineStore } from 'pinia';
 import type { Movie, TMDBResponse } from '~/types';
 
 export const useMoviesStore = defineStore('movies', () => {
-  const movies = ref<Movie[]>([]);
+  const tmdbResponse = ref<TMDBResponse | null>(null);
   const isLoading = ref(false);
+
+  const movies = computed(() => tmdbResponse.value?.results || []);
 
   async function fetchMovies(page = 1) {
     try {
@@ -11,7 +13,7 @@ export const useMoviesStore = defineStore('movies', () => {
       const response = await $fetch<TMDBResponse>('/api/movies/discover', {
         params: { page },
       });
-      movies.value = response.results;
+      tmdbResponse.value = response;
     } catch (error) {
       const messageStore = useMessageStore();
       messageStore.message = (error as Error).message;
@@ -27,7 +29,7 @@ export const useMoviesStore = defineStore('movies', () => {
       const response = await $fetch<TMDBResponse>('/api/movies/search', {
         params: { term, page },
       });
-      movies.value = response.results;
+      tmdbResponse.value = response;
     } catch (error) {
       const messageStore = useMessageStore();
       messageStore.message = (error as Error).message;
@@ -38,8 +40,9 @@ export const useMoviesStore = defineStore('movies', () => {
   }
 
   return {
-    movies,
+    tmdbResponse,
     isLoading,
+    movies,
     fetchMovies,
     searchMovies,
   };
