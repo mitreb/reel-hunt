@@ -20,6 +20,7 @@
 
     <v-main>
       <slot />
+      <Message />
     </v-main>
   </v-app>
 </template>
