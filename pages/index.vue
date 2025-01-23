@@ -37,11 +37,12 @@
 
 <script setup lang="ts">
 import { formatDateToMonthYear } from '@/utils';
-const { movies, isLoading, fetchMovies } = useMovies();
+const moviesStore = useMoviesStore();
+const { movies } = storeToRefs(moviesStore);
 const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
 
 onMounted(() => {
-  fetchMovies();
+  moviesStore.fetchMovies();
 });
 </script>
 
