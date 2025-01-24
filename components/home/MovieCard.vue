@@ -1,20 +1,22 @@
 <template>
-  <v-card v-if="movie" class="bg-transparent">
-    <div class="position-relative">
-      <v-img
-        :src="movie.poster_path ? `${imageBaseUrl}${movie.poster_path}` : ''"
-        aspect-ratio="2/3"
-        cover
-      ></v-img>
-      <ScoreCircle :score="movie.vote_average" />
-    </div>
-    <v-card-text class="px-0">
-      <h3>{{ movie.title }}</h3>
-      <p class="text-grey text-subtitle-2">
-        {{ formatDateToMonthYear(movie.release_date) }}
-      </p>
-    </v-card-text>
-  </v-card>
+  <NuxtLink v-if="movie" :to="`/${movie.id}`" class="text-decoration-none">
+    <v-card class="bg-transparent">
+      <div class="position-relative">
+        <v-img
+          :src="movie.poster_path ? `${imageBaseUrl}${movie.poster_path}` : ''"
+          aspect-ratio="2/3"
+          cover
+        ></v-img>
+        <ScoreCircle :score="movie.vote_average" />
+      </div>
+      <v-card-text class="px-0">
+        <h3>{{ movie.title }}</h3>
+        <p class="text-grey text-subtitle-2">
+          {{ formatDateToMonthYear(movie.release_date) }}
+        </p>
+      </v-card-text>
+    </v-card>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">
