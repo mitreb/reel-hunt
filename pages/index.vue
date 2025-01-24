@@ -6,7 +6,13 @@
     </h1>
     <h1 v-else class="text-h4 mt-16 mb-6">Feature Today</h1>
 
-    <v-row v-if="movies.length">
+    <v-row v-if="isLoading">
+      <v-col v-for="n in 20" :key="n" cols="12" sm="6" md="4" lg="3" xl="2">
+        <HomeMovieSkeleton />
+      </v-col>
+    </v-row>
+
+    <v-row v-else-if="movies.length">
       <v-col
         v-for="(movie, index) in movies"
         :key="movie?.id || index"
@@ -42,7 +48,7 @@
 const route = useRoute();
 const router = useRouter();
 const moviesStore = useMoviesStore();
-const { searchTerm, movies, tmdbResponse, currentPage } =
+const { searchTerm, isLoading, movies, tmdbResponse, currentPage } =
   storeToRefs(moviesStore);
 
 const totalPages = computed(() => tmdbResponse.value?.total_pages || 0);
