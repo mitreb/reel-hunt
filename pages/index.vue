@@ -1,6 +1,10 @@
 <template>
   <v-container>
-    <p class="text-h4 mt-16 mb-6">Feature Today</p>
+    <h1 v-if="searchTerm" class="text-h4 mt-16 mb-6 text-truncate">
+      <span class="text-no-wrap">Search results for</span>
+      <span class="font-weight-bold ms-2">"{{ searchTerm }}"</span>
+    </h1>
+    <h1 v-else class="text-h4 mt-16 mb-6">Feature Today</h1>
 
     <v-row v-if="movies.length">
       <v-col
@@ -38,7 +42,8 @@
 const route = useRoute();
 const router = useRouter();
 const moviesStore = useMoviesStore();
-const { movies, tmdbResponse, currentPage } = storeToRefs(moviesStore);
+const { searchTerm, movies, tmdbResponse, currentPage } =
+  storeToRefs(moviesStore);
 
 const totalPages = computed(() => tmdbResponse.value?.total_pages || 0);
 const showPagination = computed(() => totalPages.value > 1);
