@@ -4,7 +4,7 @@ import type { Movie, TMDBResponse } from '~/types';
 export const useMoviesStore = defineStore('movies', () => {
   const route = useRoute();
   const tmdbResponse = ref<TMDBResponse | null>(null);
-  const isLoading = ref(false);
+  const isLoading = ref(true);
 
   const movies = computed<Movie[]>(() => tmdbResponse.value?.results || []);
   const currentPage = computed(() => Number(route.query.page) || 1);
