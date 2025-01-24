@@ -16,7 +16,8 @@
           append-inner-icon="mdi-magnify"
           placeholder="Search"
           @update:model-value="handleSearchInput"
-          @click:append-inner="moviesStore.searchMovies"
+          @click:append-inner="search"
+          @keyup.enter="search"
         ></v-text-field>
       </v-container>
     </v-app-bar>
@@ -36,5 +37,9 @@ const { searchTerm } = storeToRefs(moviesStore);
 
 function handleSearchInput(term: string) {
   router.push({ query: { ...route.query, q: term || undefined } });
+}
+
+function search() {
+  moviesStore.searchMovies();
 }
 </script>
