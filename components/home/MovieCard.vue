@@ -1,5 +1,9 @@
 <template>
-  <NuxtLink v-if="movie" :to="`/${movie.id}`" class="text-decoration-none">
+  <NuxtLink
+    v-if="movie"
+    :to="`/${movie.id}`"
+    class="text-decoration-none text-white"
+  >
     <v-card class="bg-transparent">
       <div class="position-relative">
         <v-img
