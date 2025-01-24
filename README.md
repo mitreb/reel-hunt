@@ -2,6 +2,8 @@
 
 Modern movie search app built with Nuxt 3 and TMDB API.
 
+![Reel Hunt Preview](docs/screenshots/preview.png)
+
 ## Features
 
 - 🎥 Browse popular movies
