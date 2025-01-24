@@ -2,9 +2,13 @@
   <v-app id="inspire">
     <v-app-bar height="56" class="px-4" flat>
       <v-container class="d-flex align-center">
-        <v-icon size="36">mdi-movie-roll</v-icon>
-
-        <v-app-bar-title class="text-h4 ml-4">Reel Hunt</v-app-bar-title>
+        <NuxtLink
+          to="/"
+          class="d-flex align-center text-decoration-none text-white"
+        >
+          <v-icon size="36">mdi-movie-roll</v-icon>
+          <v-app-bar-title class="text-h4 ml-4">Reel Hunt</v-app-bar-title>
+        </NuxtLink>
 
         <v-spacer></v-spacer>
 
