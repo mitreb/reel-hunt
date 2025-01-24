@@ -2,7 +2,7 @@
   <v-container>
     <p class="text-h4 mt-16 mb-6">Feature Today</p>
 
-    <v-row>
+    <v-row v-if="movies.length">
       <v-col
         v-for="(movie, index) in movies"
         :key="movie?.id || index"
@@ -15,6 +15,14 @@
         <HomeMovieCard :movie="movie" />
       </v-col>
     </v-row>
+
+    <v-empty-state
+      v-else
+      class="pa-16"
+      icon="mdi-movie-search"
+      title="No movies found"
+      subtitle="Try different keywords or check your spelling. You can also try searching for actor names, directors, or genres."
+    />
 
     <v-pagination
       v-if="showPagination"
